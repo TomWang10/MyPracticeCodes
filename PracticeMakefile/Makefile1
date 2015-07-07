@@ -1,0 +1,9 @@
+#最简单形式的makefile
+myapp: main.o 2.o 3.o
+	g++ -o myapp main.o 2.o 3.o
+main.o: main.cc a.h
+	g++ -c main.cc
+2.o: 2.cc a.h b.h
+	g++ -c 2.cc
+3.o: 3.cc b.h c.h
+	g++ -c 3.cc

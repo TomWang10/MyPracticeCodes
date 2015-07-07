@@ -1,0 +1,26 @@
+#带宏的makefile
+all: myapp
+
+# 指定编译器
+CC = g++
+
+# 设置引用的头文件目录
+INCLUDE = .
+
+# 设置调试模式的一些选项
+CFLAGS = -g -Wall -ansi
+
+# 设置发布模式的一些选项
+#CFLAGS = -O -Wall -ansi
+
+myapp: main.o 2.o 3.o
+	$(CC) -o myapp main.o 2.o 3.o
+
+main.o: main.cc a.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c main.cc
+
+2.o: 2.cc a.h b.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c 2.cc
+
+3.o: 3.cc b.h c.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c 3.cc
