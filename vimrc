@@ -6,6 +6,9 @@ set number
 set expandtab
 set tabstop=4
 set t_Co=256
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -23,10 +26,10 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 "
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'Mizuchi/STL-Syntax'
 Plugin 'vim-scripts/a.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
