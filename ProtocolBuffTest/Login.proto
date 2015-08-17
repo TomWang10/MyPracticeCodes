@@ -1,0 +1,18 @@
+package Test;
+
+message RetLogin
+{
+	required int32		sblx = 1;
+	required string		sjhm = 2;
+	required string		yjxx = 3; 
+	required string		jymm = 4; 
+	required string		syspm1 = 5; 
+	required string		syspm2 = 6; 
+	required string		syspm3 = 7; 
+	required string		syspm_ex = 8; 
+	required string		type = 9; 
+	required string		yybdm = 10; 
+	required string		user_id_lx = 11; 
+	required string		user_id = 12; 
+	required string		ex_pwd = 13; 
+}
