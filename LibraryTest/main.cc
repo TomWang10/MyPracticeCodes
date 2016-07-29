@@ -1,4 +1,4 @@
-#include "Test.h"
+#include "StaticLibTest.h"
 
 int main()
 {

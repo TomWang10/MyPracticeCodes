@@ -1,0 +1,15 @@
+define bts
+    if $argc != 2
+        help bts
+    else
+        set $count = $arg1
+        while $count >= 0
+            set $addr = $arg0 + ($arg1 - $count) * 8
+            printf "0x%llx 0x%llx\n", $addr, *(unsigned long long *)($addr)
+            set $count--
+        end
+end
+
+document bts
+    bts addr count
+end

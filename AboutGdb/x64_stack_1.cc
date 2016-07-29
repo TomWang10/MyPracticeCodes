@@ -16,7 +16,8 @@ void func1(int a, int b, int c, int d, int e, int f, int g)
 void func1(int a, int b)
 {
     int a1 = a, a2 = b;
-    func2(1, 2, 3, 4);
+    func2(a1, a2, 3, 4);
+    printf("%d,%d\n", a1, a2);
 }
 
 int main()
