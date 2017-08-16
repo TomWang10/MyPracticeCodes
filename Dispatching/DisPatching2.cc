@@ -1,20 +1,21 @@
 #include <iostream>
 #include <type_traits>
 
-struct Apple {};
-struct Banana {};
-struct Coffee {};
 
 struct FruitTag {};
 struct AppleTag : FruitTag {};
 struct BananaTag : FruitTag {};
 struct CoffeeTag{};
 
-
-template <typename T> struct Tag{};
-template <> struct Tag<Apple> { using type = AppleTag ; };
-template <> struct Tag<Banana> { using type = BananaTag; };
-template <> struct Tag<Coffee> { using type = CoffeeTag; };
+struct Apple {
+    using type = AppleTag;
+};
+struct Banana {
+    using type = BananaTag;
+};
+struct Coffee {
+    using type = CoffeeTag;
+};
 
 namespace FruitImpl
 {
@@ -60,7 +61,7 @@ namespace FruitImpl
 template <typename T>
 void Eat(const T& fruit)
 {
-    FruitImpl::Eat<typename FruitImpl::TagCast<typename Tag<T>::type, FruitTag, CoffeeTag>::type>::Munch(fruit);
+    FruitImpl::Eat<typename FruitImpl::TagCast<typename T::type, FruitTag, CoffeeTag>::type>::Munch(fruit);
 }
 
 int main()

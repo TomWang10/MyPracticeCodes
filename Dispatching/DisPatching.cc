@@ -1,13 +1,14 @@
 #include <iostream>
-struct Apple {};
-struct Banana {};
-
 struct AppleTag {};
 struct BananaTag {};
 
-template <typename T> struct Tag{};
-template <> struct Tag<Apple> { using type = AppleTag; };
-template <> struct Tag<Banana> { using type = BananaTag; };
+struct Apple {
+    using type = AppleTag;
+};
+
+struct Banana {
+    using type = BananaTag;
+};
 
 namespace FruitImpl
 {
@@ -32,7 +33,7 @@ namespace FruitImpl
 template <typename T>
 void Eat(const T& fruit)
 {
-    FruitImpl::Eat<typename Tag<T>::type>::Munch(fruit);
+    FruitImpl::Eat<typename T::type>::Munch(fruit);
 }
 
 int main()
