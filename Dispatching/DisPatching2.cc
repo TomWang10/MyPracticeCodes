@@ -23,7 +23,7 @@ namespace FruitImpl
     template <> struct Eat<FruitTag>
     {
         template <typename T>
-        static void Munch(const T&)
+        static void DoEat(const T&)
         {
             std::cout << "Fruit" << std::endl;
         }
@@ -32,7 +32,7 @@ namespace FruitImpl
     template <> struct Eat<CoffeeTag>
     {
         template <typename T>
-        static void Munch(const T&)
+        static void DoEat(const T&)
         {
             std::cout << "Coffee" << std::endl;
         }
@@ -61,7 +61,7 @@ namespace FruitImpl
 template <typename T>
 void Eat(const T& fruit)
 {
-    FruitImpl::Eat<typename FruitImpl::TagCast<typename T::type, FruitTag, CoffeeTag>::type>::Munch(fruit);
+    FruitImpl::Eat<typename FruitImpl::TagCast<typename T::type, FruitTag, CoffeeTag>::type>::DoEat(fruit);
 }
 
 int main()
