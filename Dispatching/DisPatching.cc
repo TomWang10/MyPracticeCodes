@@ -1,6 +1,7 @@
 #include <iostream>
 struct AppleTag {};
 struct BananaTag {};
+struct DefaultTag {};
 
 struct Apple {
     using type = AppleTag;
@@ -10,9 +11,20 @@ struct Banana {
     using type = BananaTag;
 };
 
+struct Other {
+    using type = DefaultTag;
+};
+
 namespace FruitImpl
 {
-    template <typename T> struct Eat {};
+    template <typename T> struct Eat 
+    {
+        template <typename T1>
+        static void Munch(const T1&)
+        {
+            std::cout << "default" << std::endl;
+        }
+    };
     template <> struct Eat<AppleTag>
     {
         static void Munch(const Apple& )
@@ -40,7 +52,9 @@ int main()
 {
     Apple a;
     Banana b;
+    Other c;
     Eat(a);
     Eat(b);
+    Eat(c);
     return 0;
 }
